@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Contacts
 import android.view.View
+import com.example.projectlab_pollista.UI.SignInActivity
 import com.example.projectlab_pollista.UI.SignUpActivity
 
 const val EXTRA_MESSAGE = "com.example.projectlab_pollista.MESSAGE"
@@ -20,6 +21,11 @@ class MainActivity : AppCompatActivity() {
 
     fun signUp(view: View){
         val intent = Intent(this, SignUpActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun signIn(view: View){
+        val intent = Intent(this,SignInActivity::class.java)
         startActivity(intent)
     }
 }
