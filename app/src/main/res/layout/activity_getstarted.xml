@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:background="@drawable/getstarted_ic_getstartedbtn"
+        android:background="@drawable/bluebuttonshape"
         android:text="Get started"
         android:fontFamily="@font/gilroymedium"
         android:textColor="@color/white"
@@ -130,6 +130,8 @@
         android:letterSpacing="0.08"
         android:textAllCaps="false"
         android:padding="0dp"
+
+        android:onClick="signUp"
 
         app:layout_constraintTop_toBottomOf="@id/btnGetStarted"
         app:layout_constraintBottom_toBottomOf="parent"

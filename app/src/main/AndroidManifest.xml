@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectLabPollista">
         <activity
-            android:name=".MainActivity"
+            android:name=".UI.SignUpActivity"
             android:exported="true"
-            android:theme="@style/Theme.ProjectLabPollista">
+            android:theme="@style/Theme.SignUp">
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
