@@ -3,15 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bluebuttonshape.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/buttonshape.xml" value="0.112" />
         <entry key="app/src/main/res/drawable/getStarted_ic_buble.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/getstarted_ic_buble.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/graybuttonshape.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_buble.xml" value="0.112" />
         <entry key="app/src/main/res/drawable/ic_emailconf.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/ic_getstartedbtn.xml" value="0.112" />
         <entry key="app/src/main/res/drawable/ic_pollistalogo.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_welcometext.xml" value="0.223" />
         <entry key="app/src/main/res/drawable/signup_ic_back.xml" value="0.112" />
+        <entry key="app/src/main/res/drawable/whitebuttonshape.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_confirmation.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_email_confirm.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_getstarted.xml" value="0.21331521739130435" />
