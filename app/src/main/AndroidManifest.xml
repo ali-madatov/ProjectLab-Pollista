@@ -10,9 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectLabPollista">
         <activity
+            android:name=".UI.ConfirmationActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".UI.ForgotPasswordActivity"
             android:exported="true"
-            android:theme="@style/Theme.LightWindow"/>
+            android:theme="@style/Theme.LightWindow" />
         <activity
             android:name=".UI.SignInActivity"
             android:exported="true"
@@ -27,11 +36,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
