@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/buttonshape.xml" value="0.112" />
+        <entry key="app/src/main/res/drawable/getStarted_ic_buble.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/getstarted_ic_buble.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_buble.xml" value="0.112" />
+        <entry key="app/src/main/res/drawable/ic_emailconf.xml" value="0.165" />
+        <entry key="app/src/main/res/drawable/ic_getstartedbtn.xml" value="0.112" />
+        <entry key="app/src/main/res/drawable/ic_pollistalogo.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_welcometext.xml" value="0.223" />
+        <entry key="app/src/main/res/drawable/signup_ic_back.xml" value="0.112" />
+        <entry key="app/src/main/res/layout/activity_email_confirm.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.21331521739130435" />
+        <entry key="app/src/main/res/layout/activity_getstarted.xml" value="0.21331521739130435" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.21331521739130435" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.8907185628742516" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.165" />
+      </ProjectState>
+    </option>
   </component>
 </project>

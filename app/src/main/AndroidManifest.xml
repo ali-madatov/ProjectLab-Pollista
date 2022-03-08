@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectLabPollista">
         <activity
+            android:name=".UI.ForgotPasswordActivity"
+            android:exported="true"
+            android:theme="@style/Theme.LightWindow"/>
+        <activity
+            android:name=".UI.SignInActivity"
+            android:exported="true"
+            android:theme="@style/Theme.LightWindow" />
+        <activity
+            android:name=".UI.EmailConfirmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.SignUpActivity"
+            android:exported="true"
+            android:theme="@style/Theme.LightWindow" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
