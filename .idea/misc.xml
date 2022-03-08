@@ -7,11 +7,13 @@
         <entry key="app/src/main/res/drawable/getStarted_ic_buble.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/getstarted_ic_buble.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_buble.xml" value="0.112" />
+        <entry key="app/src/main/res/drawable/ic_emailconf.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/ic_getstartedbtn.xml" value="0.112" />
         <entry key="app/src/main/res/drawable/ic_welcometext.xml" value="0.223" />
         <entry key="app/src/main/res/drawable/signup_ic_back.xml" value="0.112" />
+        <entry key="app/src/main/res/layout/activity_email_confirm.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.8907185628742516" />
       </map>
     </option>

@@ -10,10 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectLabPollista">
         <activity
+            android:name=".UI.EmailConfirmActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.SignUpActivity"
             android:exported="true"
-            android:theme="@style/Theme.SignUp">
-        </activity>
+            android:theme="@style/Theme.SignUp"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

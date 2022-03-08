@@ -158,6 +158,8 @@
         android:layout_width="327.5dp"
         android:layout_height="wrap_content"
 
+        android:onClick="signUpSucces"
+
         android:background="@drawable/bluebuttonshape"
         android:text="Sign up"
         android:textColor="@color/white"

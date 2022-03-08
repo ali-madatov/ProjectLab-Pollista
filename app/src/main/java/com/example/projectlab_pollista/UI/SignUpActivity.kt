@@ -17,4 +17,8 @@ class SignUpActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
+    fun signUpSucces(view: View){
+        val intent = Intent(this,EmailConfirmActivity::class.java)
+        startActivity(intent)
+    }
 }
