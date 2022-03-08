@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/ic_welcometext.xml" value="0.223" />
         <entry key="app/src/main/res/drawable/signup_ic_back.xml" value="0.112" />
         <entry key="app/src/main/res/layout/activity_email_confirm.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_getstarted.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.21331521739130435" />

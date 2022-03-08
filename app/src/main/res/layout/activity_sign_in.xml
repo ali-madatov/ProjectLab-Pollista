@@ -140,6 +140,8 @@
         android:layout_width="327.5dp"
         android:layout_height="wrap_content"
 
+        android:onClick="forgottenPassword"
+
         android:background="@android:color/transparent"
         android:text="Forgot password?"
         android:fontFamily="@font/gilroymedium"
