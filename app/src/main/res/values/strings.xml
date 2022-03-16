@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProjectLab-Pollista</string>
+    <string name="user_name">ali.madatovv</string>
+    <string name="posts">posts</string>
+    <string name="followers">followers</string>
+    <string name="following">following</string>
 </resources>

@@ -44,7 +44,7 @@
             android:layout_width="10dp"
             android:layout_height="17dp"
 
-            android:background="@drawable/signup_ic_back"
+            android:background="@drawable/back_icon"
             android:padding="5dp"
             android:onClick="backToGetStarted"
 
