@@ -50,7 +50,7 @@ class ProfileFragment : Fragment() {
         gridViewAdapter = GridViewAdapter(requireActivity().applicationContext)
         recyclerView.adapter = gridViewAdapter
 
-        for (range in 0..24){
+        for (range in 0..25){
             dataList.add(PostModel(R.drawable.image1,R.drawable.image2))
         }
 
