@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/drawable/ic_buble.xml" value="0.112" />
         <entry key="app/src/main/res/drawable/ic_emailconf.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/ic_getstartedbtn.xml" value="0.112" />
+        <entry key="app/src/main/res/drawable/ic_image1vec.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/ic_pollistalogo.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_profileicon.xml" value="0.1365" />
         <entry key="app/src/main/res/drawable/ic_searchicon.xml" value="0.1365" />
@@ -31,16 +32,23 @@
         <entry key="app/src/main/res/drawable/selector_tickicon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/signup_ic_back.xml" value="0.112" />
         <entry key="app/src/main/res/drawable/whitebuttonshape.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_account.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_confirmation.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_email_confirm.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_getstarted.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_own_profile.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_own_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.8907185628742516" />
+        <entry key="app/src/main/res/layout/fragment_add.xml" value="0.2866847826086957" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2866847826086957" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2866847826086957" />
+        <entry key="app/src/main/res/layout/fragment_tick.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/navigation_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/post_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/profile_details.xml" value="0.13056930693069307" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.10572916666666667" />
       </map>

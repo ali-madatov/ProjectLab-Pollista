@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background"
-    tools:context=".UI.OwnProfileActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.NavigationFragments.ProfileFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ltTopLayer"
         android:layout_width="match_parent"
@@ -48,10 +48,19 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <include layout="@layout/profile_details"/>
+    <include
+        android:id="@+id/ltProfile"
+        layout="@layout/profile_details"/>
 
-    <include layout="@layout/navigation_view"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ltProfile"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
