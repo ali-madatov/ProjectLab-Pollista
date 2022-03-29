@@ -14,6 +14,6 @@
         android:icon="@drawable/selector_tickicon"/>
     <item android:id="@+id/nav_profile"
         android:title="Profile"
-        android:icon="@drawable/ic_profileicon"/>
+        android:icon="@drawable/profile_icon"/>
 
 </menu>

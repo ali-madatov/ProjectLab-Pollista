@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.projectlab_pollista.Adapters.GridViewAdapter
 import com.example.projectlab_pollista.Model.PostModel
 import com.example.projectlab_pollista.R
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,7 +52,8 @@ class ProfileFragment : Fragment() {
         recyclerView.adapter = gridViewAdapter
 
         for (range in 0..25){
-            dataList.add(PostModel(R.drawable.image1,R.drawable.image2))
+            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
+                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
         }
 
         gridViewAdapter.setDataList(dataList)

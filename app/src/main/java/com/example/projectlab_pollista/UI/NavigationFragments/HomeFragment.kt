@@ -5,7 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout.HORIZONTAL
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.projectlab_pollista.Adapters.GridViewAdapter
+import com.example.projectlab_pollista.Adapters.PostsAdapter
+import com.example.projectlab_pollista.Model.PostModel
 import com.example.projectlab_pollista.R
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +30,9 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var postsAdapter: PostsAdapter
+    private var dataList = mutableListOf<PostModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +46,20 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        var v = inflater.inflate(R.layout.fragment_home, container, false)
+        var recyclerView = v.findViewById<RecyclerView>(R.id.rvPostsRecyclerView)
+
+        recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext, LinearLayoutManager.VERTICAL,false)
+        postsAdapter = PostsAdapter(requireActivity().applicationContext)
+        recyclerView.adapter = postsAdapter
+
+        for (range in 0..25){
+            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
+                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
+        }
+
+        postsAdapter.setDataList(dataList)
+        return v
     }
 
     companion object {

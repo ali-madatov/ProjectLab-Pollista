@@ -2,12 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.projectlab_pollista">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ProjectLabPollista">
         <activity
             android:name=".UI.AccountActivity"
@@ -16,7 +18,7 @@
         </activity>
         <activity
             android:name=".UI.ConfirmationActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".UI.ForgotPasswordActivity"
             android:exported="true"
