@@ -6,6 +6,8 @@
         <entry key="app/src/main/res/drawable/back_icon.xml" value="0.242" />
         <entry key="app/src/main/res/drawable/black_search_icon.xml" value="0.242" />
         <entry key="app/src/main/res/drawable/black_tick_icon.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/blue_home_icon.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/blue_search_icon.xml" value="0.1045" />
         <entry key="app/src/main/res/drawable/blue_tick_icon.xml" value="0.169" />
         <entry key="app/src/main/res/drawable/bluebuttonshape.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/buttonshape.xml" value="0.112" />
@@ -42,6 +44,9 @@
         <entry key="app/src/main/res/drawable/shape_button_up_vote.xml" value="0.169" />
         <entry key="app/src/main/res/drawable/shape_button_vote.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/signup_ic_back.xml" value="0.112" />
+        <entry key="app/src/main/res/drawable/white_home_icon.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/white_search_icon.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/white_tick_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/whitebuttonshape.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_confirmation.xml" value="0.21331521739130435" />
@@ -55,7 +60,7 @@
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.8907185628742516" />
         <entry key="app/src/main/res/layout/fragment_add.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2866847826086957" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/fragment_tick.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/home_post.xml" value="0.1" />

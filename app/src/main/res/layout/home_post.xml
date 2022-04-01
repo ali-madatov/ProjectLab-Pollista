@@ -51,10 +51,11 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@drawable/shape_eclipse"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,30 +64,62 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintVertical_bias="0.5">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnUpVote"
-                android:layout_width="60dp"
-                android:layout_height="94dp"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintVertical_bias="0.5">
 
-                android:clickable="true"
-                android:background="@drawable/shape_button_up_vote"
-                android:src="@drawable/selector_button_vote"
-                android:paddingStart="17dp"
-                android:paddingTop="15dp"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnUpVote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="85dp"
+                    android:backgroundTint="@android:color/transparent"
+
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:clickable="true"
+                    app:icon="@drawable/white_tick_icon"
+                    app:iconGravity="end"
+                    app:iconSize="20dp"
+                    android:paddingTop="15dp"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDownVote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="85dp"
+
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:clickable="true"
+                    android:backgroundTint="@android:color/transparent"
+                    app:icon="@drawable/white_tick_icon"
+                    app:iconSize="20dp"
+                    app:iconGravity="end"
+                    android:paddingBottom="25dp"
+                    />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/shape_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.9"
                 />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnDownVote"
-                android:layout_width="60dp"
-                android:layout_height="94dp"
 
-                android:clickable="true"
-                android:background="@drawable/shape_button_down_vote"
-                android:src="@drawable/selector_button_vote"
-                android:paddingStart="17dp"
-                android:paddingBottom="25dp"/>
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
