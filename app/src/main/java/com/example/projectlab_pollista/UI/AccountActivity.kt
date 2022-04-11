@@ -35,20 +35,20 @@ class AccountActivity : AppCompatActivity() {
 
         val imageUrl = "https://static.remove.bg/remove-bg-web/b27c50a4d669fdc13528397ba4bc5bd61725e4cc/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png";
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_account)
 
         setWindowDecorview(true)
-
-        setContentView(R.layout.activity_account)
         val fab = findViewById<FloatingActionButton>(R.id.fab_button)
         fab.imageTintList = null
 
         var bottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
         val menu: Menu = bottomNavigationView.menu
         val menuItem: MenuItem = menu.findItem(R.id.nav_profile)
+
         //loading profile picture from url using Glide Library
         GlideApp.with(this)
             .asBitmap()
-            .load(imageUrl).diskCacheStrategy(DiskCacheStrategy.ALL)
+            .load(imageUrl)
             .apply(
                 RequestOptions
                 .circleCropTransform().placeholder(R.drawable.photo2).error(R.drawable.photo2))
@@ -84,9 +84,9 @@ class AccountActivity : AppCompatActivity() {
 
     fun onNavigationViewColorChanged(navView: BottomNavigationView,fab: FloatingActionButton,isDarkMode: Boolean){
         setWindowDecorview(isDarkMode)
+        var menu = navView.menu
         if(isDarkMode){
             navView.setBackgroundResource(R.drawable.black_panel)
-            var menu = navView.menu
             menu.getItem(0).setIcon(R.drawable.white_home_icon)
             menu.getItem(1).setIcon(R.drawable.white_search_icon)
             fab.setImageResource(R.drawable.ic_add)
@@ -94,7 +94,6 @@ class AccountActivity : AppCompatActivity() {
         }
         else{
             navView.setBackgroundResource(R.drawable.navigation_panel)
-            var menu = navView.menu
             menu.getItem(0).setIcon(R.drawable.selector_homeicon)
             menu.getItem(1).setIcon(R.drawable.selector_searchicon)
             fab.setImageResource(R.drawable.ic_blue_addicon)
@@ -104,25 +103,47 @@ class AccountActivity : AppCompatActivity() {
     }
     fun setWindowDecorview(isDarkMode: Boolean){
 
-            //hiding navigation bar
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 
             //making status bar transparent and stick layout to full screen
             if(Build.VERSION.SDK_INT>=30){
                 if(isDarkMode) {
-                    window.statusBarColor = Color.TRANSPARENT
+                    window.statusBarColor = resources.getColor(R.color.black)
+                    window.navigationBarColor = resources.getColor(R.color.black)
                     window.insetsController?.setSystemBarsAppearance(
                         0,
                         WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
                     )
+                    window.insetsController?.setSystemBarsAppearance(
+                        0,
+                        WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
+                    )
                 }
-                else
+                else {
+                    window.statusBarColor = resources.getColor(R.color.white)
+                    window.navigationBarColor = resources.getColor(R.color.white)
                     window.insetsController?.setSystemBarsAppearance(
                         WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
                         WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
                     )
-                // Making status bar overlaps with the activity
-                WindowCompat.setDecorFitsSystemWindows(window, !isDarkMode)
+                    window.insetsController?.setSystemBarsAppearance(
+                        WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
+                        WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
+                    )
+                }
+
+            }
+            else {
+                if(isDarkMode){
+                    window.statusBarColor = resources.getColor(R.color.black)
+                    window.navigationBarColor = resources.getColor(R.color.black)
+                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    }
+                else{
+                    window.statusBarColor = resources.getColor(R.color.white)
+                    window.navigationBarColor = resources.getColor(R.color.white)
+                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
+                }
             }
 
 

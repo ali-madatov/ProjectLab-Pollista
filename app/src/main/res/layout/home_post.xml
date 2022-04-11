@@ -69,6 +69,7 @@
                 android:layout_height="wrap_content"
                 app:singleSelection="true"
                 android:orientation="vertical"
+                android:gravity="end"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -78,10 +79,10 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnUpVote"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="85dp"
                     android:backgroundTint="@android:color/transparent"
-
+                    android:layout_gravity="end"
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:clickable="true"
                     app:icon="@drawable/white_tick_icon"
@@ -91,9 +92,9 @@
                     />
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnDownVote"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="85dp"
-
+                    android:layout_gravity="end"
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:clickable="true"
                     android:backgroundTint="@android:color/transparent"
