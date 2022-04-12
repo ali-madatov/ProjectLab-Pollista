@@ -33,6 +33,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnHamburger"
             android:layout_width="21.9dp"
             android:layout_height="17dp"
 

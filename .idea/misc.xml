@@ -41,9 +41,11 @@
         <entry key="app/src/main/res/drawable/selector_homeicon.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/selector_searchicon.xml" value="0.242" />
         <entry key="app/src/main/res/drawable/selector_tickicon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/shape_bottomsheet.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/shape_button_down_vote.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/shape_button_up_vote.xml" value="0.169" />
         <entry key="app/src/main/res/drawable/shape_button_vote.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/shape_line.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/signup_ic_back.xml" value="0.112" />
         <entry key="app/src/main/res/drawable/white_home_icon.xml" value="0.1045" />
         <entry key="app/src/main/res/drawable/white_search_icon.xml" value="0.1045" />
@@ -59,6 +61,7 @@
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.8907185628742516" />
+        <entry key="app/src/main/res/layout/bottomsheet_own_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_add.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />

@@ -5,11 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.DialogFragment.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectlab_pollista.Adapters.GridViewAdapter
 import com.example.projectlab_pollista.Model.PostModel
 import com.example.projectlab_pollista.R
+import com.example.projectlab_pollista.UI.NavigationFragments.BottomSheets.OwnProfileModalBottomSheet
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -43,8 +48,16 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         var v = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        var buttonHamburger = v.findViewById<AppCompatButton>(R.id.btnHamburger)
+        buttonHamburger.setOnClickListener{
+            val ownProfileModalBottomSheet = OwnProfileModalBottomSheet()
+            ownProfileModalBottomSheet.show(parentFragmentManager,"OwnProfileModalBottomSheet")
+        }
+
         var recyclerView = v.findViewById<RecyclerView>(R.id.recyclerView)
 
         recyclerView.layoutManager = GridLayoutManager(requireActivity().applicationContext,3)
