@@ -22,7 +22,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.projectlab_pollista.Adapters.GridViewAdapter
-import com.example.projectlab_pollista.GlideApp
+import com.example.projectlab_pollista.Modules.GlideApp
 import com.example.projectlab_pollista.Model.PostModel
 import com.example.projectlab_pollista.R
 import com.google.android.material.bottomnavigation.BottomNavigationView

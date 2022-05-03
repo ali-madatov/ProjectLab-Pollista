@@ -244,7 +244,7 @@
             android:onClick="signInNeeded"
 
             android:text="Sign in"
-            android:textColor="@color/blue_main"
+            android:textColor="@color/main_blue"
             android:textSize="17sp"
             android:fontFamily="@font/gilorysemibold"
             android:textAllCaps="false"

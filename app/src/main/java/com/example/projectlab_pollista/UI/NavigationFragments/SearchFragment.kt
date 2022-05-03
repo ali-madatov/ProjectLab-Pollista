@@ -1,11 +1,21 @@
 package com.example.projectlab_pollista.UI.NavigationFragments
 
+import android.graphics.Typeface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.example.projectlab_pollista.Adapters.GridViewAdapter
+import com.example.projectlab_pollista.ExternalResources.SpannedGridLayoutManager
+import com.example.projectlab_pollista.ExternalResources.SpannedGridLayoutManager.SpanInfo
+import com.example.projectlab_pollista.Model.PostModel
 import com.example.projectlab_pollista.R
+import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +32,9 @@ class SearchFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var gridViewAdapter: GridViewAdapter
+    private var dataList = mutableListOf<PostModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +48,50 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        val v = inflater.inflate(R.layout.fragment_search, container, false)
+
+        val title = v.findViewById<TextView>(R.id.tvDiscoverLabel)
+        val typeFace = Typeface.create(
+            ResourcesCompat.getFont(requireActivity().applicationContext,R.font.gilroymedium),
+            Typeface.NORMAL)
+        title.typeface = typeFace
+
+        val recyclerView = v.findViewById<RecyclerView>(R.id.recyclerView)
+        var bigItemToCheck = 0
+        var bigOnLeft = true
+        val manager = SpannedGridLayoutManager(
+            object : SpannedGridLayoutManager.GridSpanLookup {
+                override fun getSpanInfo(position: Int): SpanInfo {
+                    // Conditions for 2x2 items
+                    return if (position == bigItemToCheck) {
+                        if(bigOnLeft) {
+                            bigItemToCheck += 10
+                            bigOnLeft = false
+                        }
+                        else {
+                            bigItemToCheck += 8
+                            bigOnLeft=true
+                        }
+                        SpanInfo(2, 2)
+                    } else {
+                        SpanInfo(1, 1)
+                    }
+                }
+            },
+            3,  // number of columns
+            0.556f // how big is default item
+        )
+
+        gridViewAdapter = GridViewAdapter(requireActivity().applicationContext)
+
+        for (range in 0..100){
+            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
+                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
+        }
+        gridViewAdapter.setDataList(dataList)
+        recyclerView.layoutManager = manager
+        recyclerView.adapter = gridViewAdapter
+        return v;
     }
 
     companion object {

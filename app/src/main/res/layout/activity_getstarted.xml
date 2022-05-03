@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".UI.MainActivity">
 
     <ImageView
         android:id="@+id/imageBuble"
@@ -108,7 +108,7 @@
         android:textAlignment="center"
         android:fontFamily="@font/gilorysemibold"
         android:textSize="17sp"
-        android:textColor="@color/blue_main"
+        android:textColor="@color/main_blue"
         android:letterSpacing="0.08"
         android:textAllCaps="false"
         android:padding="0dp"
@@ -128,7 +128,7 @@
         android:textAlignment="center"
         android:fontFamily="@font/gilorysemibold"
         android:textSize="17sp"
-        android:textColor="@color/blue_main"
+        android:textColor="@color/main_blue"
         android:letterSpacing="0.08"
         android:textAllCaps="false"
         android:padding="0dp"

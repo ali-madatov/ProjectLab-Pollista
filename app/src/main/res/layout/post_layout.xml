@@ -17,8 +17,6 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:maxWidth="129dp"
-            android:maxHeight="117dp"
             android:src="@drawable/image1"
 
             android:layout_marginBottom="-1dp"/>
@@ -29,8 +27,6 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:maxWidth="129dp"
-            android:maxHeight="117dp"
             android:src="@drawable/image2"
 
             android:layout_marginTop="-1dp"/>

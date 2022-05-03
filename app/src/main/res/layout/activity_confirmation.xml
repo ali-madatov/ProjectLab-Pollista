@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_main"
+    android:background="@color/main_blue"
     tools:context=".UI.ConfirmationActivity">
 
     <TextView
@@ -49,7 +49,7 @@
         android:onClick="signIn"
 
         android:text="Sign in"
-        android:textColor="@color/blue_main"
+        android:textColor="@color/main_blue"
         android:fontFamily="@font/gilroymedium"
         android:textSize="18sp"
         android:textAllCaps="false"

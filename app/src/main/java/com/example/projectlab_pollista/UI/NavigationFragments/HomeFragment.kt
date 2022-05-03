@@ -46,8 +46,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var v = inflater.inflate(R.layout.fragment_home, container, false)
-        var recyclerView = v.findViewById<RecyclerView>(R.id.rvPostsRecyclerView)
+        val v = inflater.inflate(R.layout.fragment_home, container, false)
+        val recyclerView = v.findViewById<RecyclerView>(R.id.rvPostsRecyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext, LinearLayoutManager.VERTICAL,false)
         postsAdapter = PostsAdapter(requireActivity().applicationContext)
