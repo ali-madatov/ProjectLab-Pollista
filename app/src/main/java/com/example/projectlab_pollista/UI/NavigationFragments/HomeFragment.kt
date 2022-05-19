@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout.HORIZONTAL
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectlab_pollista.Adapters.GridViewAdapter
 import com.example.projectlab_pollista.Adapters.PostsAdapter
@@ -48,7 +49,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_home, container, false)
         val recyclerView = v.findViewById<RecyclerView>(R.id.rvPostsRecyclerView)
-
+        val snapHelper = PagerSnapHelper()
         recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext, LinearLayoutManager.VERTICAL,false)
         postsAdapter = PostsAdapter(requireActivity().applicationContext)
         recyclerView.adapter = postsAdapter
@@ -59,6 +60,8 @@ class HomeFragment : Fragment() {
         }
 
         postsAdapter.setDataList(dataList)
+
+        snapHelper.attachToRecyclerView(recyclerView)
         return v
     }
 
