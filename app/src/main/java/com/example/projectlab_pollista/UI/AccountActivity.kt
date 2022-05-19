@@ -1,67 +1,52 @@
 package com.example.projectlab_pollista.UI
 
+import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import android.provider.MediaStore
 import android.view.*
 import android.view.View.*
+import android.widget.ImageView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.example.projectlab_pollista.Adapters.GridViewAdapter
 import com.example.projectlab_pollista.Modules.GlideApp
-import com.example.projectlab_pollista.Model.PostModel
 import com.example.projectlab_pollista.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.io.IOException
 
 
 class AccountActivity : AppCompatActivity() {
 
+    lateinit var imageView: ImageView
+    lateinit var menuItem: MenuItem
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val imageUrl = "https://static.remove.bg/remove-bg-web/b27c50a4d669fdc13528397ba4bc5bd61725e4cc/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png";
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account)
 
-        setWindowDecorview(true)
+        setWindowDecorView(true)
         val fab = findViewById<FloatingActionButton>(R.id.fab_button)
         fab.imageTintList = null
+        fab.setOnClickListener { startAddPostActivity() }
 
-        var bottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
         val menu: Menu = bottomNavigationView.menu
-        val menuItem: MenuItem = menu.findItem(R.id.nav_profile)
+        menuItem = menu.findItem(R.id.nav_profile)
 
-        //loading profile picture from url using Glide Library
-        GlideApp.with(this)
-            .asBitmap()
-            .load(imageUrl)
-            .apply(
-                RequestOptions
-                .circleCropTransform().placeholder(R.drawable.photo2).error(R.drawable.photo2))
-            .into(object : CustomTarget<Bitmap>() {
-                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                    menuItem.icon = BitmapDrawable(resources, resource)
-                }
 
-                override fun onLoadCleared(placeholder: Drawable?) {
-
-                }
-            })
-
+        uploadProfileImage(imageUrl)
 
         bottomNavigationView.itemIconTintList = null
 
@@ -82,9 +67,33 @@ class AccountActivity : AppCompatActivity() {
 
     }
 
-    fun onNavigationViewColorChanged(navView: BottomNavigationView,fab: FloatingActionButton,isDarkMode: Boolean){
-        setWindowDecorview(isDarkMode)
-        var menu = navView.menu
+
+    private fun startAddPostActivity(){
+        val intent = Intent(this,AddPostActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun uploadProfileImage(imageUrl: String){
+        //loading profile picture from url using Glide Library
+        GlideApp.with(this)
+            .asBitmap()
+            .load(imageUrl)
+            .apply(
+                RequestOptions
+                    .circleCropTransform().placeholder(R.drawable.photo2).error(R.drawable.photo2))
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    menuItem.icon = BitmapDrawable(resources, resource)
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {
+
+                }
+            })
+    }
+    private fun onNavigationViewColorChanged(navView: BottomNavigationView,fab: FloatingActionButton,isDarkMode: Boolean){
+        setWindowDecorView(isDarkMode)
+        val menu = navView.menu
         if(isDarkMode){
             navView.setBackgroundResource(R.drawable.black_panel)
             menu.getItem(0).setIcon(R.drawable.white_home_icon)
@@ -101,7 +110,7 @@ class AccountActivity : AppCompatActivity() {
         }
 
     }
-    fun setWindowDecorview(isDarkMode: Boolean){
+    private fun setWindowDecorView(isDarkMode: Boolean){
 
 
             //making status bar transparent and stick layout to full screen

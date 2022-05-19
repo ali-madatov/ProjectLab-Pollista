@@ -20,7 +20,7 @@
             android:layout_width="10dp"
             android:layout_height="17dp"
 
-            android:background="@drawable/back_icon"
+            android:background="@drawable/black_back_icon"
 
 
             android:layout_margin="27dp"

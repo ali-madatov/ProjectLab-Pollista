@@ -53,12 +53,15 @@
         <entry key="app/src/main/res/drawable/shape_eclipse.xml" value="0.118" />
         <entry key="app/src/main/res/drawable/shape_line.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/shape_rectangle.xml" value="0.162" />
+        <entry key="app/src/main/res/drawable/shape_rounded_rectangle.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/signup_ic_back.xml" value="0.112" />
+        <entry key="app/src/main/res/drawable/white_back_icon.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/white_home_icon.xml" value="0.1045" />
         <entry key="app/src/main/res/drawable/white_search_icon.xml" value="0.1045" />
         <entry key="app/src/main/res/drawable/white_tick_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/whitebuttonshape.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_post.xml" value="0.2807971014492754" />
         <entry key="app/src/main/res/layout/activity_confirmation.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_email_confirm.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.21331521739130435" />
