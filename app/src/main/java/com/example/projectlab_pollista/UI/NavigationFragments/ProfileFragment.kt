@@ -1,5 +1,6 @@
 package com.example.projectlab_pollista.UI.NavigationFragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.example.projectlab_pollista.Adapters.GridViewAdapter
 import com.example.projectlab_pollista.Model.PostModel
 import com.example.projectlab_pollista.R
 import com.example.projectlab_pollista.UI.NavigationFragments.BottomSheets.OwnProfileModalBottomSheet
+import com.example.projectlab_pollista.UI.SignInActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.*
 
@@ -50,15 +52,19 @@ class ProfileFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        var v = inflater.inflate(R.layout.fragment_profile, container, false)
+        val v = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        var buttonHamburger = v.findViewById<AppCompatButton>(R.id.btnHamburger)
+        val buttonHamburger = v.findViewById<AppCompatButton>(R.id.btnHamburger)
         buttonHamburger.setOnClickListener{
             val ownProfileModalBottomSheet = OwnProfileModalBottomSheet()
             ownProfileModalBottomSheet.show(parentFragmentManager,"OwnProfileModalBottomSheet")
         }
 
-        var recyclerView = v.findViewById<RecyclerView>(R.id.recyclerView)
+        val buttonBack = v.findViewById<AppCompatButton>(R.id.btnBack)
+        buttonBack.setOnClickListener{
+            backToSignInPage()
+        }
+        val recyclerView = v.findViewById<RecyclerView>(R.id.recyclerView)
 
         recyclerView.layoutManager = GridLayoutManager(requireActivity().applicationContext,3)
         gridViewAdapter = GridViewAdapter(requireActivity().applicationContext)
@@ -91,5 +97,10 @@ class ProfileFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun backToSignInPage(){
+        val intent = Intent(requireActivity(),SignInActivity::class.java)
+        startActivity(intent)
     }
 }

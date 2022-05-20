@@ -88,6 +88,7 @@
                     app:toggle_paddingLeft="10dp"
                     app:toggle_iconPadding="29dp"
                     app:toggle_paddingTop="20dp"
+                    app:toggle_iconColor="@color/main_black"
                     app:toggle_backgroundColor="@android:color/transparent"
                     app:toggle_selectedBackgroundColor="@android:color/transparent"
 
@@ -103,6 +104,7 @@
                     app:toggle_paddingLeft="10dp"
                     app:toggle_iconPadding="29dp"
                     app:toggle_paddingBottom="20dp"
+                    app:toggle_iconColor="@color/main_black"
                     app:toggle_backgroundColor="@android:color/transparent"
                     app:toggle_selectedBackgroundColor="@android:color/transparent"
                     />

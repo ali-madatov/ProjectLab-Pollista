@@ -76,10 +76,10 @@
         <entry key="app/src/main/res/layout/bottomsheet_own_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_add.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2866847826086957" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tick.xml" value="0.2866847826086957" />
-        <entry key="app/src/main/res/layout/home_post.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/home_post.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_notification.xml" value="0.25" />
         <entry key="app/src/main/res/layout/navigation_view.xml" value="0.165" />
         <entry key="app/src/main/res/layout/post_layout.xml" value="0.335" />

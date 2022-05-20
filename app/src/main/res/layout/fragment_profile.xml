@@ -22,7 +22,6 @@
 
             android:background="@drawable/black_back_icon"
 
-
             android:layout_margin="27dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

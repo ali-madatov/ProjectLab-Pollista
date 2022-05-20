@@ -91,6 +91,7 @@ class AccountActivity : AppCompatActivity() {
                 }
             })
     }
+
     private fun onNavigationViewColorChanged(navView: BottomNavigationView,fab: FloatingActionButton,isDarkMode: Boolean){
         setWindowDecorView(isDarkMode)
         val menu = navView.menu
@@ -110,6 +111,7 @@ class AccountActivity : AppCompatActivity() {
         }
 
     }
+
     private fun setWindowDecorView(isDarkMode: Boolean){
 
 
