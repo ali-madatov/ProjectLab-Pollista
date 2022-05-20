@@ -55,7 +55,6 @@
             android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/shape_eclipse"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,47 +63,49 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintVertical_bias="0.5">
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
+            <nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:singleSelection="true"
-                android:orientation="vertical"
-                android:gravity="end"
+                app:flexDirection="column"
+                app:toggle_horizontalSpacing="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintVertical_bias="0.5">
 
-                <com.google.android.material.button.MaterialButton
+                <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
                     android:id="@+id/btnUpVote"
-                    android:layout_width="match_parent"
+                    android:layout_width="60dp"
                     android:layout_height="85dp"
-                    android:backgroundTint="@android:color/transparent"
-                    android:layout_gravity="end"
-                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:background="@drawable/shape_upper_button"
                     android:clickable="true"
-                    app:icon="@drawable/white_tick_icon"
-                    app:iconGravity="end"
-                    app:iconSize="20dp"
-                    android:paddingTop="15dp"
+
+                    app:toggle_icon="@drawable/selector_tickicon"
+                    app:toggle_paddingLeft="10dp"
+                    app:toggle_iconPadding="29dp"
+                    app:toggle_paddingTop="20dp"
+                    app:toggle_backgroundColor="@android:color/transparent"
+                    app:toggle_selectedBackgroundColor="@android:color/transparent"
+
                     />
-                <com.google.android.material.button.MaterialButton
+                <nl.bryanderidder.themedtogglebuttongroup.ThemedButton
                     android:id="@+id/btnDownVote"
-                    android:layout_width="match_parent"
+                    android:layout_width="60dp"
                     android:layout_height="85dp"
-                    android:layout_gravity="end"
-                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:clickable="true"
-                    android:backgroundTint="@android:color/transparent"
-                    app:icon="@drawable/white_tick_icon"
-                    app:iconSize="20dp"
-                    app:iconGravity="end"
-                    android:paddingBottom="25dp"
+                    android:background="@drawable/shape_bottom_button"
+
+                    app:toggle_icon="@drawable/selector_tickicon"
+                    app:toggle_paddingLeft="10dp"
+                    app:toggle_iconPadding="29dp"
+                    app:toggle_paddingBottom="20dp"
+                    app:toggle_backgroundColor="@android:color/transparent"
+                    app:toggle_selectedBackgroundColor="@android:color/transparent"
                     />
 
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+            </nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup>
 
 
             <ImageView
