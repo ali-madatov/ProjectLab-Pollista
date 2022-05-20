@@ -67,6 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:flexDirection="column"
+                app:toggle_selectableAmount="1"
+                app:toggle_requiredAmount="0"
                 app:toggle_horizontalSpacing="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
