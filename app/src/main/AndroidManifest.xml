@@ -13,33 +13,33 @@
         android:theme="@style/Theme.ProjectLabPollista"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".UI.AddPostActivity"
+            android:name="com.example.pollista.UI.AddPostActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.AccountActivity"
+            android:name="com.example.pollista.UI.AccountActivity"
             android:exported="true"
             android:theme="@style/Theme.LightWindow"
             android:windowSoftInputMode="adjustPan"/>
         <activity
-            android:name=".UI.ConfirmationActivity"
+            android:name="com.example.pollista.UI.ConfirmationActivity"
             android:exported="true" />
         <activity
-            android:name=".UI.ForgotPasswordActivity"
+            android:name="com.example.pollista.UI.ForgotPasswordActivity"
             android:exported="true"
             android:theme="@style/Theme.LightWindow" />
         <activity
-            android:name=".UI.SignInActivity"
+            android:name="com.example.pollista.UI.SignInActivity"
             android:exported="true"
             android:theme="@style/Theme.LightWindow" />
         <activity
-            android:name=".UI.EmailConfirmActivity"
+            android:name="com.example.pollista.UI.EmailConfirmActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.SignUpActivity"
+            android:name="com.example.pollista.UI.SignUpActivity"
             android:exported="true"
             android:theme="@style/Theme.LightWindow" />
         <activity
-            android:name=".UI.MainActivity"
+            android:name="com.example.pollista.UI.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

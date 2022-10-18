@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.SignUpActivity">
+    tools:context="com.example.pollista.UI.SignUpActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ltTopLayer"
@@ -157,7 +157,7 @@
         android:layout_width="327.5dp"
         android:layout_height="wrap_content"
 
-        android:onClick="signUpSucces"
+        android:onClick="signUpWithCustom"
 
         android:background="@drawable/bluebuttonshape"
         android:text="Sign up"
@@ -200,6 +200,7 @@
         android:layout_width="327.5dp"
         android:layout_height="wrap_content"
 
+        android:onClick="signUpWithGoogle"
         android:background="@drawable/ic_googlesignup"
 
         android:layout_marginTop="18dp"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.SignInActivity">
+    tools:context="com.example.pollista.UI.SignInActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ltTopLayer"
@@ -126,6 +126,7 @@
 
             android:background="@drawable/graybuttonshape"
             android:hint="Password"
+            android:inputType="textPassword"
             android:textSize="18sp"
             android:fontFamily="@font/gilroymedium"
             android:paddingHorizontal="15dp"
@@ -203,7 +204,7 @@
         android:id="@+id/btnGoogleSignUp"
         android:layout_width="327.5dp"
         android:layout_height="wrap_content"
-
+        android:onClick="signUpWithGoogle"
         android:background="@drawable/ic_googlesignup"
 
         android:layout_marginTop="18dp"
