@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "625866253547",
+    "project_id": "pollista",
+    "storage_bucket": "pollista.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625866253547:android:aea9acc00e0fe2b1238aae",
+        "android_client_info": {
+          "package_name": "com.example.pollista"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625866253547-vfkqtu9qr0d7lml6o41mm7bmmahenqn3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pollista",
+            "certificate_hash": "2e6bba2d721f2f95824b7fc7f1af42197ae430a3"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1e5O7zkBF7nZnltpNAKptmR8P0MX7OaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625866253547-6s1jhl6kh4rcbh8e3n6ovc0bjc7nijjp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625866253547:android:fae1af79a78d9909238aae",
+        "android_client_info": {
+          "package_name": "com.example.projectlab_pollista"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1e5O7zkBF7nZnltpNAKptmR8P0MX7OaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625866253547-6s1jhl6kh4rcbh8e3n6ovc0bjc7nijjp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
