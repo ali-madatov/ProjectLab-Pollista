@@ -35,7 +35,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("625866253547-6s1jhl6kh4rcbh8e3n6ovc0bjc7nijjp.apps.googleusercontent.com")
+            .requestIdToken(getString(R.string.server_client_id))
             .requestEmail()
             .build()
 
@@ -48,26 +48,16 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun checkUser() {
         val firebaseUser = auth.currentUser
-        if (firebaseUser != null){
-            startActivity(Intent(this@SignUpActivity, AccountActivity::class.java))
-            finish()
-        }
+//        if (firebaseUser != null){
+//            startActivity(Intent(this@SignUpActivity, AccountActivity::class.java))
+//            finish()
+//        }
     }
 
     fun signUpWithGoogle(view: View){
         Log.d(TAG, "SignUpActivity: begin Google SignIn")
         val intent = googleSignInClient.signInIntent
         startActivityForResult(intent, RC_SIGN_IN)
-//        val signInRequest = BeginSignInRequest.builder()
-//            .setGoogleIdTokenRequestOptions(
-//                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-//                    .setSupported(true)
-//                    // Your server's client ID, not your Android client ID.
-//                    .setServerClientId("625866253547-2s6lr032nnbkls0lamdqvjb9pd4mbeto.apps.googleusercontent.com")
-//                    // Only show accounts previously used to sign in.
-//                    .setFilterByAuthorizedAccounts(true)
-//                    .build())
-//            .build()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -9,4 +9,6 @@
 
     <string name="app_settings">App settings</string>
     <string name="account_settings">Account settings</string>
+
+    <string name="server_client_id">625866253547-6s1jhl6kh4rcbh8e3n6ovc0bjc7nijjp.apps.googleusercontent.com</string>
 </resources>
