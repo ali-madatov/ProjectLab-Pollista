@@ -85,8 +85,9 @@ class SearchFragment : Fragment() {
         gridViewAdapter = GridViewAdapter(requireActivity().applicationContext)
 
         for (range in 0..100){
-            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
-                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
+            //TODO implement the logic. See: HomeFragment
+//            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
+//                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
         }
         gridViewAdapter.setDataList(dataList)
         recyclerView.layoutManager = manager

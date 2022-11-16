@@ -8,11 +8,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pollista.Model.PostModel
+import com.example.pollista.Modules.GlideApp
+import com.example.pollista.ViewModel.AddPostViewModel
 import com.example.projectlab_pollista.R
+import com.google.firebase.storage.StorageReference
 
-class PostsAdapter(var context: Context): RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
+class PostsAdapter(val viewModel: AddPostViewModel): RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
 
-    var dataList = emptyList<PostModel>()
+    lateinit var currentContext: Context
+    var dataList = viewModel.getRepository().getAllPostModels()
 
     internal fun setDataList(dataList: List<PostModel>){
         this.dataList = dataList
@@ -34,16 +38,26 @@ class PostsAdapter(var context: Context): RecyclerView.Adapter<PostsAdapter.View
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.home_post,parent,false)
+        currentContext = parent.context
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var data = dataList[position]
+        val data = dataList[position]
 
-        holder.image1.setImageResource(data.image1)
-        holder.image2.setImageResource(data.image2)
+        //TODO implement binding here
+        GlideApp.with(currentContext)
+            .load(data.image1)
+            .into(holder.image1)
+        GlideApp.with(currentContext)
+            .load(data.image2)
+            .into(holder.image2)
         holder.description.text = data.description
         holder.tags.text = data.tags.joinToString(" ")
+//        holder.image1.setImageResource(data.image1)
+//        holder.image2.setImageResource(data.image2)
+//        holder.description.text = data.description
+//        holder.tags.text = data.tags.joinToString(" ")
     }
 
     override fun getItemCount() = dataList.size

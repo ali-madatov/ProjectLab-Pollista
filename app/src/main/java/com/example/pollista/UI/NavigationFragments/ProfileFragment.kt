@@ -69,8 +69,9 @@ class ProfileFragment : Fragment() {
         recyclerView.adapter = gridViewAdapter
 
         for (range in 0..25){
-            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
-                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
+            //TODO implement the logic. See: HomeFragment
+//            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
+//                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
         }
 
         gridViewAdapter.setDataList(dataList)

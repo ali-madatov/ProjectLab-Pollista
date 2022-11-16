@@ -5,12 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pollista.Adapters.PostsAdapter
+import com.example.pollista.Model.CachingPostModelRepository
 import com.example.pollista.Model.PostModel
+import com.example.pollista.ViewModel.AddPostViewModel
+import com.example.pollista.ViewModel.AddPostViewModelFactory
 import com.example.projectlab_pollista.R
+import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,8 +33,8 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var viewModel: AddPostViewModel
     private lateinit var postsAdapter: PostsAdapter
-    private var dataList = mutableListOf<PostModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,18 +50,22 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_home, container, false)
+        val postRepository = CachingPostModelRepository(FirebaseAuth.getInstance().currentUser!!.uid)
+        val factory = AddPostViewModelFactory(postRepository)
+
+        viewModel = ViewModelProvider(this,factory).get(AddPostViewModel::class.java)
         val recyclerView = v.findViewById<RecyclerView>(R.id.rvPostsRecyclerView)
         val snapHelper = PagerSnapHelper()
         recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext, LinearLayoutManager.VERTICAL,false)
-        postsAdapter = PostsAdapter(requireActivity().applicationContext)
+        postsAdapter = PostsAdapter(viewModel)
         recyclerView.adapter = postsAdapter
 
         for (range in 0..25){
-            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
-                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
+            //TODO implement the logic considering postID added into PostModel
+//            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
+//                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
         }
 
-        postsAdapter.setDataList(dataList)
 
         snapHelper.attachToRecyclerView(recyclerView)
         return v

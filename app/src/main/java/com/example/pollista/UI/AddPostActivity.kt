@@ -11,13 +11,14 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.view.WindowInsetsController
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
+import androidx.lifecycle.ViewModelProvider
+import com.example.pollista.Model.CachingPostModelRepository
+import com.example.pollista.ViewModel.AddPostViewModel
+import com.example.pollista.ViewModel.AddPostViewModelFactory
 import com.example.projectlab_pollista.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
@@ -29,6 +30,7 @@ import java.util.*
 class AddPostActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var viewModel: AddPostViewModel
     lateinit var storageReference: StorageReference
     private var firstImage: Uri? = null
     private var secondImage: Uri? = null
@@ -47,8 +49,11 @@ class AddPostActivity : AppCompatActivity() {
         setWindowDecorView()
 
         auth = FirebaseAuth.getInstance()
-
         progressBar = findViewById<ProgressBar>(R.id.progressBar) as ProgressBar
+
+        val postRepository = CachingPostModelRepository(auth.currentUser!!.uid)
+        val factory = AddPostViewModelFactory(postRepository)
+        viewModel = ViewModelProvider(this,factory).get(AddPostViewModel::class.java)
 
         val btnBack = findViewById<AppCompatButton>(R.id.btnBack)
         btnBack.setOnClickListener{
@@ -145,40 +150,20 @@ class AddPostActivity : AppCompatActivity() {
     }
 
     private fun sharePost(){
-        progressBar!!.visibility = View.VISIBLE
-        val firebaseUser = auth.currentUser
-        val userUid = firebaseUser!!.uid
-        val postId = UUID.randomUUID().toString()
-        val child = "users/".plus(userUid).plus("/").plus(postId).plus("/images/")
-        storageReference = FirebaseStorage.getInstance().getReference(child).child("firstImage.jpg")
-        try {
-            storageReference.putFile(firstImage!!)
-                .addOnSuccessListener {
-                    storageReference.parent!!.child("secondImage.jpg").putFile(secondImage!!)
-                        .addOnSuccessListener {
-                            Log.d(TAG, "AddPostActivity: Successfully uploaded images!")
-                            Toast.makeText(this@AddPostActivity, "Successfully uploaded images!", Toast.LENGTH_SHORT).show()
-                        }
-                        .addOnFailureListener{
-                            Log.d(TAG, "AddPostActivity: Failed to upload the second image!")
-                            Toast.makeText(this@AddPostActivity, "Failed to upload the second image!", Toast.LENGTH_SHORT).show()
-                        }
-                }
-                .addOnFailureListener{
-                    Log.d(TAG, "AddPostActivity: Failed to upload the first image!")
-                    Toast.makeText(this@AddPostActivity, "Failed to upload the first image!", Toast.LENGTH_SHORT).show()
-                }
-                .addOnCompleteListener{
-                    progressBar!!.visibility = View.GONE
-                }
+        if(firstImage==null || secondImage==null){
+            Log.d(TAG, "AddPostActivity: Missing photo to create the post")
+            Toast.makeText(this@AddPostActivity,"Poll should contain two choices/photos!",Toast.LENGTH_SHORT).show()
         }
-        catch (e: Exception){
-            e.printStackTrace()
+        else{
+            progressBar!!.visibility = View.VISIBLE
+            val caption = findViewById<EditText>(R.id.etCaption).text.toString()
+            viewModel.sharePost(firstImage!!, secondImage!!, caption)
+            progressBar!!.visibility = View.GONE
+            /*
+                Post specifications will be stored here
+             */
+            val intent = Intent(this,AccountActivity::class.java)
+            startActivity(intent)
         }
-        /*
-            Post specifications will be stored here
-         */
-        val intent = Intent(this,AccountActivity::class.java)
-        startActivity(intent)
     }
 }

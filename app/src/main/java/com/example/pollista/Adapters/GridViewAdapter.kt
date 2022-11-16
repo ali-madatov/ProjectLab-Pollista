@@ -36,8 +36,9 @@ class GridViewAdapter(var context: Context) : RecyclerView.Adapter<GridViewAdapt
     override fun onBindViewHolder(holder: GridViewAdapter.ViewHolder, position: Int) {
         var data = dataList[position]
 
-        holder.image1.setImageResource(data.image1)
-        holder.image2.setImageResource(data.image2)
+        //TODO altin vurmusan
+//        holder.image1.setImageResource(data.image1)
+//        holder.image2.setImageResource(data.image2)
     }
 
     override fun getItemCount() = dataList.size
