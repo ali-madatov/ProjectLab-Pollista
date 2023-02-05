@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:background="@drawable/shape_bottomsheet"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/color_divider_dark"
+                />
+
+            <TextView
+                android:id="@+id/ctvAccountSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:clickable="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/account_settings"
+                android:textSize="19sp"
+                android:fontFamily="@font/gilroymedium"
+                android:textColor="@color/main_black"
+                android:textAlignment="center"
+
+                android:padding="5dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="70dp"
+                android:background="@color/color_divider_light"
+                />
+
+
+            <TextView
+                android:id="@+id/ctvAppSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:clickable="true"
+                android:text="@string/app_settings"
+                android:textSize="19sp"
+                android:fontFamily="@font/gilroymedium"
+                android:textColor="@color/main_black"
+                android:textAlignment="center"
+
+                android:padding="5dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="60dp"
+                android:layout_marginHorizontal="70dp"
+                android:background="@color/color_divider_light"
+                />
+
+        </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

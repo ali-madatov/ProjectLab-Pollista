@@ -1,10 +1,11 @@
-package com.example.projectlab_pollista
+package com.example.projectlab_pollista.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Contacts
 import android.view.View
+import com.example.projectlab_pollista.R
 import com.example.projectlab_pollista.UI.SignInActivity
 import com.example.projectlab_pollista.UI.SignUpActivity
 

@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.projectlab_pollista.MainActivity
+import com.example.projectlab_pollista.UI.MainActivity
 import com.example.projectlab_pollista.R
 
 class ForgotPasswordActivity : AppCompatActivity() {

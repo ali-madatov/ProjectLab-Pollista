@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_black"
+    tools:context=".UI.AddPostActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ltTopLayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBack"
+            android:layout_width="10dp"
+            android:layout_height="17dp"
+
+            android:background="@drawable/white_back_icon"
+            android:padding="5dp"
+
+            android:layout_marginStart="22dp"
+            app:layout_constraintStart_toStartOf="@id/ltTopLayer"
+            app:layout_constraintTop_toTopOf="@id/ltTopLayer"
+            app:layout_constraintEnd_toEndOf="@id/ltTopLayer"
+            app:layout_constraintBottom_toBottomOf="@id/ltTopLayer"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="New post"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:fontFamily="@font/gilorysemibold"
+            android:textSize="20sp"
+            android:letterSpacing="0.03"
+
+
+            app:layout_constraintStart_toStartOf="@id/ltTopLayer"
+            app:layout_constraintTop_toTopOf="@id/ltTopLayer"
+            app:layout_constraintBottom_toBottomOf="@id/ltTopLayer"
+            app:layout_constraintEnd_toEndOf="@id/ltTopLayer"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.5"
+            />
+        
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:background="@android:color/transparent"
+
+            android:text="Share"
+            android:textAllCaps="false"
+            android:textColor="@color/main_blue"
+            android:fontFamily="@font/gilorysemibold"
+            android:textSize="18sp"
+            android:letterSpacing="0.03"
+
+            app:layout_constraintStart_toStartOf="@id/ltTopLayer"
+            app:layout_constraintTop_toTopOf="@id/ltTopLayer"
+            app:layout_constraintBottom_toBottomOf="@id/ltTopLayer"
+            app:layout_constraintEnd_toEndOf="@id/ltTopLayer"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="1.0"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ltFirstImageLayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ltTopLayer">
+
+        <ImageView
+            android:id="@+id/first_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:src="@drawable/ic_baseline_add_to_photos_24"
+
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
+        <TextView
+            android:id="@+id/tvFirstImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="First photo"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/giloryregular"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintStart_toEndOf="@id/first_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <Button
+            android:id="@+id/btnAddFirstImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Add"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+
+            android:layout_marginHorizontal="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ltSecondImageLayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ltFirstImageLayer">
+
+        <ImageView
+            android:id="@+id/second_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:src="@drawable/ic_baseline_add_to_photos_24"
+
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
+        <TextView
+            android:id="@+id/tvSecondImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Second photo"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/giloryregular"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintStart_toEndOf="@id/second_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <Button
+            android:id="@+id/btnAddSecondImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Add"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+
+            android:layout_marginHorizontal="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvDescriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Description"
+        android:textSize="17sp"
+        android:textColor="@color/color_divider_dark"
+
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ltSecondImageLayer"/>
+
+    <EditText
+        android:id="@+id/etCaption"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+
+        android:background="@drawable/shape_rounded_rectangle"
+
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:hint="Write a caption..."
+        android:textColorHint="@color/color_divider_dark"
+        android:gravity="start"
+        android:padding="15dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDescriptionLabel"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

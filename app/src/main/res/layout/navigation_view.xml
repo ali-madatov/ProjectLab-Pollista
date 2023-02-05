@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/navigation_panel"
+        app:labelVisibilityMode="unlabeled"
+        app:itemRippleColor="@android:color/transparent"
+        app:elevation="0dp"
+        app:itemIconSize="27dp"
+        app:menu="@menu/menu"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_button"
+        android:layout_width="56.7dp"
+        android:layout_height="56.7dp"
+        app:layout_constraintTop_toTopOf="@id/nav_view"
+        app:layout_constraintBottom_toBottomOf="@id/nav_view"
+        app:layout_constraintStart_toStartOf="@id/nav_view"
+        app:layout_constraintEnd_toEndOf="@id/nav_view"
+        android:contentDescription="Add"
+        app:maxImageSize="56.7dp"
+        android:src="@drawable/ic_blue_addicon"
+        app:rippleColor="@color/main_black"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

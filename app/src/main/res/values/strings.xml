@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ProjectLab-Pollista</string>
+    <string name="user_name">ali.madatovv</string>
+    <string name="posts">posts</string>
+    <string name="followers">followers</string>
+    <string name="following">following</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="app_settings">App settings</string>
+    <string name="account_settings">Account settings</string>
 </resources>

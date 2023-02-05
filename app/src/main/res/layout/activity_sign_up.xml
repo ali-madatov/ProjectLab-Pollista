@@ -44,7 +44,7 @@
             android:layout_width="10dp"
             android:layout_height="17dp"
 
-            android:background="@drawable/signup_ic_back"
+            android:background="@drawable/black_back_icon"
             android:padding="5dp"
             android:onClick="backToGetStarted"
 
@@ -244,7 +244,7 @@
             android:onClick="signInNeeded"
 
             android:text="Sign in"
-            android:textColor="@color/blue_main"
+            android:textColor="@color/main_blue"
             android:textSize="17sp"
             android:fontFamily="@font/gilorysemibold"
             android:textAllCaps="false"

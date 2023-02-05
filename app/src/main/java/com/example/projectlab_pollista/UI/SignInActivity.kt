@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.projectlab_pollista.MainActivity
+import com.example.projectlab_pollista.UI.MainActivity
 import com.example.projectlab_pollista.R
 
 class SignInActivity : AppCompatActivity() {
@@ -26,6 +26,11 @@ class SignInActivity : AppCompatActivity() {
 
     fun forgottenPassword(view: View){
         val intent = Intent(this,ForgotPasswordActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun signIn(view: View){
+        val intent = Intent(this,AccountActivity::class.java)
         startActivity(intent)
     }
 }
