@@ -1,6 +1,6 @@
 package com.example.pollista.UI
 
-import android.app.ProgressDialog
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -11,27 +11,22 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.view.WindowInsetsController
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.ViewModelProvider
-import com.example.pollista.Model.CachingPostModelRepository
 import com.example.pollista.ViewModel.AddPostViewModel
-import com.example.pollista.ViewModel.AddPostViewModelFactory
+import com.example.pollista.ViewModelFactory.AddPostViewModelFactory
 import com.example.projectlab_pollista.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
 import java.io.IOException
-import java.util.*
 
 class AddPostActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var viewModel: AddPostViewModel
-    lateinit var storageReference: StorageReference
     private var firstImage: Uri? = null
     private var secondImage: Uri? = null
     private var isFirstImage: Boolean? = null
@@ -49,23 +44,37 @@ class AddPostActivity : AppCompatActivity() {
         setWindowDecorView()
 
         auth = FirebaseAuth.getInstance()
-        progressBar = findViewById<ProgressBar>(R.id.progressBar) as ProgressBar
+        progressBar = findViewById(R.id.progressBar)
 
-        val postRepository = CachingPostModelRepository(auth.currentUser!!.uid)
-        val factory = AddPostViewModelFactory(postRepository)
-        viewModel = ViewModelProvider(this,factory).get(AddPostViewModel::class.java)
+        val userId = auth.currentUser!!.uid
+        val factory = AddPostViewModelFactory(userId)
+        viewModel = ViewModelProvider(this, factory).get(AddPostViewModel::class.java)
+
+        // Observe the post upload state
+        viewModel.postUploadState.observe(this) { state ->
+            when (state) {
+                is AddPostViewModel.PostUploadState.Success -> {
+                    showShortToast("Post uploaded successfully")
+                    progressBar!!.visibility = View.GONE
+                    backToAccountPage()
+                }
+                is AddPostViewModel.PostUploadState.Failure -> {
+                    showShortToast("Failed to upload post: ${state.exception.message}")
+                    // Handle the error
+                    progressBar!!.visibility = View.GONE
+                }
+            }
+        }
+
 
         val btnBack = findViewById<AppCompatButton>(R.id.btnBack)
         btnBack.setOnClickListener{
             backToAccountPage()
         }
 
-        val btnShare = findViewById<Button>(R.id.btnShare)
-        btnShare.setOnClickListener{
-            sharePost()
-        }
         val btnAddFirstImage = findViewById<Button>(R.id.btnAddFirstImage)
         val btnAddSecondImage = findViewById<Button>(R.id.btnAddSecondImage)
+        val etCaption = findViewById<EditText>(R.id.etCaption)
 
         btnAddFirstImage.setOnClickListener{
             isFirstImage=true
@@ -76,11 +85,21 @@ class AddPostActivity : AppCompatActivity() {
 
         btnAddSecondImage.setOnClickListener{
             isFirstImage=false
-//            val iGalery = Intent(Intent.ACTION_PICK)
-//            iGalery.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             val iGalery = Intent(Intent.ACTION_GET_CONTENT)
             iGalery.setType("image/*")
             startActivityForImagePicker.launch(iGalery)
+        }
+
+        val btnShare = findViewById<Button>(R.id.btnShare)
+        btnShare.setOnClickListener {
+            hideSoftKeyboard()
+            if (firstImage == null || secondImage == null) {
+                showShortToast("Both images must be selected")
+            } else {
+                progressBar!!.visibility = View.VISIBLE
+                val caption = etCaption.text.toString()
+                viewModel.sharePost(firstImage!!, secondImage!!, caption)
+            }
         }
     }
 
@@ -149,21 +168,19 @@ class AddPostActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun sharePost(){
-        if(firstImage==null || secondImage==null){
-            Log.d(TAG, "AddPostActivity: Missing photo to create the post")
-            Toast.makeText(this@AddPostActivity,"Poll should contain two choices/photos!",Toast.LENGTH_SHORT).show()
+    private fun hideSoftKeyboard(){
+        val inputMethodManager: InputMethodManager = this.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        if(inputMethodManager.isAcceptingText){
+            this.currentFocus?.let {
+                inputMethodManager.hideSoftInputFromWindow(
+                    it.windowToken,
+                    0
+                )
+            }
         }
-        else{
-            progressBar!!.visibility = View.VISIBLE
-            val caption = findViewById<EditText>(R.id.etCaption).text.toString()
-            viewModel.sharePost(firstImage!!, secondImage!!, caption)
-            progressBar!!.visibility = View.GONE
-            /*
-                Post specifications will be stored here
-             */
-            val intent = Intent(this,AccountActivity::class.java)
-            startActivity(intent)
-        }
+    }
+
+    private fun showShortToast(message: String){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

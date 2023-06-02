@@ -1,0 +1,130 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.pollista.UI.NavigationFragments.BottomSheetFragments.AccountSettings.AccountSettingsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ltTopLayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/top_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tvAccountSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/account_settings"
+            android:textAllCaps="false"
+            android:textColor="@color/main_black"
+            android:fontFamily="@font/gilorysemibold"
+            android:textSize="@dimen/title_text_size"
+            android:letterSpacing="@dimen/normal_text_line_spacing"
+
+
+            app:layout_constraintStart_toStartOf="@id/ltTopLayer"
+            app:layout_constraintTop_toTopOf="@id/ltTopLayer"
+            app:layout_constraintBottom_toBottomOf="@id/ltTopLayer"
+            app:layout_constraintEnd_toEndOf="@id/ltTopLayer"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.5"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBack"
+            android:layout_width="10dp"
+            android:layout_height="17dp"
+
+            android:background="@drawable/black_back_icon"
+            android:padding="5dp"
+
+            android:layout_marginStart="22dp"
+            app:layout_constraintStart_toStartOf="@id/ltTopLayer"
+            app:layout_constraintTop_toTopOf="@id/ltTopLayer"
+            app:layout_constraintEnd_toEndOf="@id/ltTopLayer"
+            app:layout_constraintBottom_toBottomOf="@id/ltTopLayer"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/ltBottomLayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/top_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ltTopLayer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPersonalInformation"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+
+            android:background="@android:color/transparent"
+            android:drawableEnd="@drawable/black_next_icon"
+            android:text="@string/personal_information"
+            android:textAlignment="viewStart"
+            android:paddingStart="@dimen/start_margin"
+            android:paddingEnd="@dimen/end_margin"
+            android:textAllCaps="false"
+            android:textColor="@color/main_black"
+            android:fontFamily="@font/giloryregular"
+            android:textSize="@dimen/normal_text_size"
+            android:letterSpacing="@dimen/normal_text_line_spacing"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPrivacy"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+
+            android:background="@android:color/transparent"
+            android:drawableEnd="@drawable/black_next_icon"
+            android:text="@string/privacy"
+            android:textAlignment="viewStart"
+            android:paddingStart="@dimen/start_margin"
+            android:paddingEnd="@dimen/end_margin"
+            android:textAllCaps="false"
+            android:textColor="@color/main_black"
+            android:fontFamily="@font/giloryregular"
+            android:textSize="@dimen/normal_text_size"
+            android:letterSpacing="@dimen/normal_text_line_spacing"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSecurity"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+
+            android:background="@android:color/transparent"
+            android:drawableEnd="@drawable/black_next_icon"
+            android:text="@string/security"
+            android:textAlignment="viewStart"
+            android:paddingStart="@dimen/start_margin"
+            android:paddingEnd="@dimen/end_margin"
+            android:textAllCaps="false"
+            android:textColor="@color/main_black"
+            android:fontFamily="@font/giloryregular"
+            android:textSize="@dimen/normal_text_size"
+            android:letterSpacing="@dimen/normal_text_line_spacing"
+            />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

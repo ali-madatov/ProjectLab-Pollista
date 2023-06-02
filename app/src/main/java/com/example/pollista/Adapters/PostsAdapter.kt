@@ -1,64 +1,103 @@
 package com.example.pollista.Adapters
 
-import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pollista.Model.PostModel
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import com.example.pollista.BusinessModel.HomePostDetails
 import com.example.pollista.Modules.GlideApp
-import com.example.pollista.ViewModel.AddPostViewModel
+import com.example.pollista.UI.NavigationFragments.OnVoteClickListener
 import com.example.projectlab_pollista.R
-import com.google.firebase.storage.StorageReference
+import com.google.android.material.imageview.ShapeableImageView
+import nl.bryanderidder.themedtogglebuttongroup.ThemedButton
+import nl.bryanderidder.themedtogglebuttongroup.ThemedToggleButtonGroup
 
-class PostsAdapter(val viewModel: AddPostViewModel): RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
 
-    lateinit var currentContext: Context
-    var dataList = viewModel.getRepository().getAllPostModels()
+class PostsAdapter(private val onVoteClickListener: OnVoteClickListener) : PagingDataAdapter<HomePostDetails, PostsAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-    internal fun setDataList(dataList: List<PostModel>){
-        this.dataList = dataList
-    }
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<HomePostDetails>() {
+            override fun areItemsTheSame(oldItem: HomePostDetails, newItem: HomePostDetails): Boolean =
+                oldItem.postID == newItem.postID
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var image1: ImageView
-        var image2: ImageView
-        var description: TextView
-        var tags: TextView
-
-        init {
-            image1 = itemView.findViewById(R.id.imgFirstImage)
-            image2 = itemView.findViewById(R.id.imgSecondImage)
-            description = itemView.findViewById(R.id.tvDescription)
-            tags = itemView.findViewById(R.id.tvTags)
+            override fun areContentsTheSame(oldItem: HomePostDetails, newItem: HomePostDetails): Boolean =
+                oldItem == newItem
         }
     }
 
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var image1: ImageView = itemView.findViewById(R.id.imgFirstImage)
+        var image2: ImageView = itemView.findViewById(R.id.imgSecondImage)
+        var userPhoto: ShapeableImageView = itemView.findViewById(R.id.sivUserProfilePhoto)
+        var username: TextView = itemView.findViewById(R.id.tvUsername)
+        var description: TextView = itemView.findViewById(R.id.tvDescription)
+        var tags: TextView = itemView.findViewById(R.id.tvTags)
+        var buttonGroup: ThemedToggleButtonGroup = itemView.findViewById(R.id.grpToggleButtons)
+
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.home_post,parent,false)
-        currentContext = parent.context
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.home_post, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = dataList[position]
+        val data = getItem(position)
 
-        //TODO implement binding here
-        GlideApp.with(currentContext)
-            .load(data.image1)
-            .into(holder.image1)
-        GlideApp.with(currentContext)
-            .load(data.image2)
-            .into(holder.image2)
-        holder.description.text = data.description
-        holder.tags.text = data.tags.joinToString(" ")
-//        holder.image1.setImageResource(data.image1)
-//        holder.image2.setImageResource(data.image2)
-//        holder.description.text = data.description
-//        holder.tags.text = data.tags.joinToString(" ")
+        data?.let { it ->
+            holder.buttonGroup.setOnSelectListener { themedButton: ThemedButton ->
+                val isUpvote = when (themedButton.id) {
+                    R.id.btnUpVote -> true
+                    R.id.btnDownVote -> false
+                    else -> throw IllegalStateException("Unexpected button ID")
+                }
+                onVoteClickListener.onVoteClick(it.postID, isUpvote)
+            }
+
+            GlideApp.with(holder.itemView.context)
+                .load(it.firstImageUri)
+                .into(holder.image1)
+
+            GlideApp.with(holder.itemView.context)
+                .load(it.secondImageUri)
+                .into(holder.image2)
+            GlideApp.with(holder.itemView.context)
+                .asBitmap()
+                .load(it.userCoreDetails.photoUrl)
+                .apply(
+                    RequestOptions
+                        .circleCropTransform().placeholder(R.drawable.photo2).error(R.drawable.photo2))
+                .into(object : CustomTarget<Bitmap>() {
+                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                        holder.userPhoto.setImageBitmap(resource)
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                        holder.userPhoto.setImageDrawable(placeholder)
+                    }
+                })
+            holder.username.text = it.userCoreDetails.username
+            holder.description.text = it.postDescription.caption
+            holder.tags.text = it.postDescription.tags.joinToString(" ")
+            it.voterDetails.optionOneVoted?.let { isUpVote ->
+                if(isUpVote){
+                    holder.buttonGroup.selectButton(R.id.btnUpVote)
+                }
+                else{
+                    holder.buttonGroup.selectButton(R.id.btnDownVote)
+                }
+
+            }
+        }
     }
 
-    override fun getItemCount() = dataList.size
 }

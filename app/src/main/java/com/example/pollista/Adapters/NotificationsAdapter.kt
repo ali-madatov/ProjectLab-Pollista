@@ -14,8 +14,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pollista.ExternalResources.CustomTypefaceSpan
-import com.example.pollista.Model.NotificationModel
+import com.example.pollista.UI.ExternalResources.CustomTypefaceSpan
+import com.example.pollista.DataAccess.Model.NotificationModel
 import com.example.projectlab_pollista.R
 import com.google.android.material.imageview.ShapeableImageView
 
@@ -56,11 +56,13 @@ class NotificationsAdapter(var context: Context): RecyclerView.Adapter<Notificat
         val spannable = SpannableString(data.userName+" "+data.action+"  "+data.timeElapsed)
 
         //setting typefaces
-        spannable.setSpan(CustomTypefaceSpan("",typeFace1),
+        spannable.setSpan(
+            CustomTypefaceSpan("",typeFace1),
                                     0,data.userName.length,
                                     Spannable.SPAN_INCLUSIVE_INCLUSIVE)
 
-        spannable.setSpan(CustomTypefaceSpan("",typeFace2),
+        spannable.setSpan(
+            CustomTypefaceSpan("",typeFace2),
             data.userName.length+1, spannable.length,
             Spannable.SPAN_INCLUSIVE_INCLUSIVE)
 

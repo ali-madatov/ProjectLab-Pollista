@@ -11,7 +11,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pollista.Adapters.NotificationsAdapter
-import com.example.pollista.Model.NotificationModel
+import com.example.pollista.DataAccess.Model.NotificationModel
 import com.example.projectlab_pollista.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -59,35 +59,55 @@ class TickFragment : Fragment() {
         recyclerView.adapter = notificationsAdapter
 
 
-        dataList.add(NotificationModel(R.drawable.photo1,"najaf.mahammad","started following you.",
-                "22m",null,null))
-        dataList.add(NotificationModel(R.drawable.photo2,"jonathan.agner",
+        dataList.add(
+            NotificationModel(R.drawable.photo1,"najaf.mahammad","started following you.",
+                "22m",null,null)
+        )
+        dataList.add(
+            NotificationModel(R.drawable.photo2,"jonathan.agner",
                     "voted your post. Click and see his choice!",
-                    "26m",R.drawable.image1,R.drawable.image2))
-        dataList.add(NotificationModel(R.drawable.photo2,"jonathan.agner",
+                    "26m",R.drawable.image1,R.drawable.image2)
+        )
+        dataList.add(
+            NotificationModel(R.drawable.photo2,"jonathan.agner",
                     "started following you.",
-                    "1h",null,null))
-        dataList.add(NotificationModel(R.drawable.photo1,"yunis.mikayilov",
+                    "1h",null,null)
+        )
+        dataList.add(
+            NotificationModel(R.drawable.photo1,"yunis.mikayilov",
             "voted your post. Click and see his choice!",
-            "1h",R.drawable.image2,R.drawable.image1))
-        dataList.add(NotificationModel(R.drawable.photo2,"yunis.mikayilov",
+            "1h",R.drawable.image2,R.drawable.image1)
+        )
+        dataList.add(
+            NotificationModel(R.drawable.photo2,"yunis.mikayilov",
             "voted your post. Click and see his choice!",
-            "1h",R.drawable.image1,R.drawable.image2))
-        dataList.add(NotificationModel(R.drawable.photo1,"yunis.mikayilov",
+            "1h",R.drawable.image1,R.drawable.image2)
+        )
+        dataList.add(
+            NotificationModel(R.drawable.photo1,"yunis.mikayilov",
             "voted your post. Click and see his choice!",
-            "1h",R.drawable.image2,R.drawable.image1))
-        dataList.add(NotificationModel(R.drawable.photo2,"yunis.mikayilov",
+            "1h",R.drawable.image2,R.drawable.image1)
+        )
+        dataList.add(
+            NotificationModel(R.drawable.photo2,"yunis.mikayilov",
             "voted your post. Click and see his choice!",
-            "1h",R.drawable.image1,R.drawable.image2))
-        dataList.add(NotificationModel(R.drawable.photo1,"yunis.mikayilov",
+            "1h",R.drawable.image1,R.drawable.image2)
+        )
+        dataList.add(
+            NotificationModel(R.drawable.photo1,"yunis.mikayilov",
             "voted your post. Click and see his choice!",
-            "1h",R.drawable.image2,R.drawable.image1))
-        dataList.add(NotificationModel(R.drawable.photo1,"yunis.mikayilov",
+            "1h",R.drawable.image2,R.drawable.image1)
+        )
+        dataList.add(
+            NotificationModel(R.drawable.photo1,"yunis.mikayilov",
             "voted your post. Click and see his choice!",
-            "1h",R.drawable.image1,R.drawable.image2))
-        dataList.add(NotificationModel(R.drawable.photo2,"yunis.mikayilov",
+            "1h",R.drawable.image1,R.drawable.image2)
+        )
+        dataList.add(
+            NotificationModel(R.drawable.photo2,"yunis.mikayilov",
             "started following you.",
-            "2h",null,null))
+            "2h",null,null)
+        )
 
         notificationsAdapter.setDataList(dataList)
 

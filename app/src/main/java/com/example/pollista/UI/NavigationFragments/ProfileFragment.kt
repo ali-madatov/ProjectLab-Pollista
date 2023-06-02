@@ -1,21 +1,36 @@
 package com.example.pollista.UI.NavigationFragments
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
-import androidx.fragment.app.DialogFragment.*
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asFlow
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.Observer
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.pollista.Adapters.GridViewAdapter
-import com.example.pollista.Model.PostModel
+import com.example.pollista.DataAccess.Model.PostModel
+import com.example.pollista.Modules.GlideApp
 import com.example.projectlab_pollista.R
 import com.example.pollista.UI.NavigationFragments.BottomSheets.OwnProfileModalBottomSheet
 import com.example.pollista.UI.SignInActivity
-import java.util.*
+import com.example.pollista.ViewModel.ProfileViewModel
+import com.example.pollista.ViewModelFactory.ProfileViewModelFactory
+import com.google.android.material.imageview.ShapeableImageView
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +48,16 @@ class ProfileFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var gridViewAdapter: GridViewAdapter
-    private var dataList = mutableListOf<PostModel>()
+    private lateinit var viewModel: ProfileViewModel
+
+    private lateinit var profilePhotoImg: ShapeableImageView
+    private lateinit var tvUsername: TextView
+    private lateinit var tvName: TextView
+    private lateinit var tvBio: TextView
+    private lateinit var tvPostsNumber: TextView
+    private lateinit var tvFollowersNumber: TextView
+    private lateinit var tvFollowingNumber: TextView
+    private var progressBar: ProgressBar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,32 +76,47 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_profile, container, false)
 
+        val factory = ProfileViewModelFactory()
+        viewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
+
+        profilePhotoImg = v.findViewById(R.id.imgProfilePhoto)
+        tvUsername = v.findViewById(R.id.tvUsername)
+        tvName = v.findViewById(R.id.tvName)
+        tvBio = v.findViewById(R.id.tvBio)
+        tvPostsNumber = v.findViewById(R.id.tvPostsNumber)
+        tvFollowersNumber = v.findViewById(R.id.tvFollowersNumber)
+        tvFollowingNumber = v.findViewById(R.id.tvFollowingNumber)
+        progressBar = v.findViewById(R.id.progressBar)
+
         val buttonHamburger = v.findViewById<AppCompatButton>(R.id.btnHamburger)
         buttonHamburger.setOnClickListener{
             val ownProfileModalBottomSheet = OwnProfileModalBottomSheet()
             ownProfileModalBottomSheet.show(parentFragmentManager,"OwnProfileModalBottomSheet")
         }
-
-        val buttonBack = v.findViewById<AppCompatButton>(R.id.btnBack)
-        buttonBack.setOnClickListener{
-            backToSignInPage()
-        }
         val recyclerView = v.findViewById<RecyclerView>(R.id.recyclerView)
 
         recyclerView.layoutManager = GridLayoutManager(requireActivity().applicationContext,3)
-        gridViewAdapter = GridViewAdapter(requireActivity().applicationContext)
+        gridViewAdapter = GridViewAdapter()
         recyclerView.adapter = gridViewAdapter
 
-        for (range in 0..25){
-            //TODO implement the logic. See: HomeFragment
-//            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
-//                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
-        }
-
-        gridViewAdapter.setDataList(dataList)
         return v
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        progressBar!!.visibility = View.VISIBLE
+        viewModel.getUser()
+        subscribeToLiveUserData()
+        // Observe the posts
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.ownPosts.asFlow().collect { pagingData: PagingData<PostModel> ->
+                viewLifecycleOwner.lifecycleScope.launch {
+                    gridViewAdapter.submitData(pagingData)
+                }
+            }
+        }
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -98,6 +137,34 @@ class ProfileFragment : Fragment() {
             }
     }
 
+    private fun subscribeToLiveUserData(){
+        viewModel.user.observe(viewLifecycleOwner, Observer { user ->
+            // updating UI with the new user data
+            tvUsername.text = user.username
+            tvName.text = user.name
+            tvBio.text = user.bio
+            tvPostsNumber.text = user.postsNumber.toString()
+            tvFollowersNumber.text = user.followers.size.toString()
+            tvFollowingNumber.text = user.followings.size.toString()
+
+            GlideApp.with(this)
+                .asBitmap()
+                .load(user.photoUrl)
+                .apply(
+                    RequestOptions
+                        .circleCropTransform().placeholder(R.drawable.photo2).error(R.drawable.photo2))
+                .into(object : CustomTarget<Bitmap>() {
+                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                        profilePhotoImg.setImageBitmap(resource)
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {
+                        profilePhotoImg.setImageDrawable(placeholder)
+                    }
+                })
+            progressBar!!.visibility = View.GONE
+        })
+    }
     private fun backToSignInPage(){
         val intent = Intent(requireActivity(),SignInActivity::class.java)
         startActivity(intent)

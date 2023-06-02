@@ -29,5 +29,86 @@
         android:id="@+id/nav_profile"
         android:name="com.example.pollista.UI.NavigationFragments.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_nav_profile_to_nav_app_settings"
+            app:destination="@id/nav_app_settings" />
+        <action
+            android:id="@+id/action_nav_profile_to_nav_account_settings"
+            app:destination="@id/nav_account_settings" />
+    </fragment>
+
+    <!-- Fragments under app settings -->
+    <fragment
+        android:id="@+id/nav_app_settings"
+        android:name="com.example.pollista.UI.NavigationFragments.BottomSheetFragments.AppSettings.AppSettingsFragment"
+        android:label="fragment_app_settings"
+        tools:layout="@layout/fragment_app_settings">
+        <action
+            android:id="@+id/action_nav_app_settings_to_nav_profile"
+            app:destination="@id/nav_profile" />
+        <action
+            android:id="@+id/action_nav_app_settings_to_nav_language"
+            app:destination="@id/nav_language" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_language"
+        android:name="com.example.pollista.UI.NavigationFragments.BottomSheetFragments.AppSettings.LanguageFragment"
+        android:label="fragment_language"
+        tools:layout="@layout/fragment_language">
+        <action
+            android:id="@+id/action_nav_language_to_nav_app_settings"
+            app:destination="@+id/nav_app_settings"/>
+    </fragment>
+
+    <!-- Fragments under account settings -->
+    <fragment
+        android:id="@+id/nav_account_settings"
+        android:name="com.example.pollista.UI.NavigationFragments.BottomSheetFragments.AccountSettings.AccountSettingsFragment"
+        android:label="fragment_account_settings"
+        tools:layout="@layout/fragment_account_settings">
+        <action
+            android:id="@+id/action_nav_account_settings_to_nav_profile"
+            app:destination="@id/nav_profile" />
+        <action
+            android:id="@+id/action_nav_account_settings_to_nav_personal_info"
+            app:destination="@id/nav_personal_information" />
+        <action
+            android:id="@+id/action_nav_account_settings_to_nav_privacy"
+            app:destination="@id/nav_privacy" />
+        <action
+            android:id="@+id/action_nav_account_settings_to_nav_security"
+            app:destination="@id/nav_security" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_personal_information"
+        android:name="com.example.pollista.UI.NavigationFragments.BottomSheetFragments.AccountSettings.PersonalInformationFragment"
+        android:label="fragment_personal_information"
+        tools:layout="@layout/fragment_personal_information">
+        <action
+            android:id="@+id/action_nav_personal_info_to_nav_account_settings"
+            app:destination="@id/nav_account_settings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_privacy"
+        android:name="com.example.pollista.UI.NavigationFragments.BottomSheetFragments.AccountSettings.PrivacyFragment"
+        android:label="fragment_privacy"
+        tools:layout="@layout/fragment_privacy">
+        <action
+            android:id="@+id/action_nav_privacy_to_nav_account_settings"
+            app:destination="@id/nav_account_settings" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_security"
+        android:name="com.example.pollista.UI.NavigationFragments.BottomSheetFragments.AccountSettings.SecurityFragment"
+        android:label="fragment_security"
+        tools:layout="@layout/fragment_security">
+        <action
+            android:id="@+id/action_nav_security_to_nav_account_settings"
+            app:destination="@id/nav_account_settings" />
+    </fragment>
+
 </navigation>

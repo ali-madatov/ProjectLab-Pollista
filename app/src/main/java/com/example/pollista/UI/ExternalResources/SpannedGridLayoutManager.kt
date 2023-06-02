@@ -1,4 +1,4 @@
-package com.example.pollista.ExternalResources
+package com.example.pollista.UI.ExternalResources
 
 import android.content.Context
 import android.graphics.PointF
