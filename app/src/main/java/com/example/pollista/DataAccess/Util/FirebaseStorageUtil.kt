@@ -4,14 +4,14 @@ import android.net.Uri
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.suspendCancellableCoroutine
 
-object FirebaseStorageUtil {
+object FirebaseStorageUtil: StorageUtilInterface {
 
-    suspend fun uploadImageToFirebase(
+    override suspend fun uploadImageToFirebase(
         reference: StorageReference,
-        imageUri: Uri,
+        imageUri: Uri?,
         onException: (Exception) -> Unit
     ): String? = suspendCancellableCoroutine { continuation ->
-        val uploadTask = reference.putFile(imageUri)
+        val uploadTask = reference.putFile(imageUri!!)
 
         uploadTask.continueWithTask { task ->
             if (!task.isSuccessful) {

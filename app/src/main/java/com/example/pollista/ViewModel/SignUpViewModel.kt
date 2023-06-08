@@ -8,8 +8,7 @@ import com.example.pollista.DataAccess.Model.UserModel
 import com.example.pollista.DataAccess.Repository.UserModelRepository
 import kotlinx.coroutines.launch
 
-class SignUpViewModel(private val userId: String) : ViewModel() {
-    val repository = UserModelRepository()
+class SignUpViewModel(private val repository: UserModelRepository) : ViewModel() {
 
     private val _userAddState = MutableLiveData<UserAddState>()
     val userAddState: LiveData<UserAddState> get() = _userAddState

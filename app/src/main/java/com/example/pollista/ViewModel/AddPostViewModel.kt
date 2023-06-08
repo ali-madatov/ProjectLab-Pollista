@@ -10,10 +10,7 @@ import com.example.pollista.DataAccess.Repository.HomePostsRepository
 import com.example.pollista.DataAccess.Repository.UserModelRepository
 import kotlinx.coroutines.launch
 
-class AddPostViewModel(private val userId: String): ViewModel() {
-
-    private val postRepository = HomePostsRepository()
-    private val userDataRepository = UserModelRepository()
+class AddPostViewModel(private val postRepository: HomePostsRepository, private val userDataRepository: UserModelRepository): ViewModel() {
 
     private val _postUploadState = MutableLiveData<PostUploadState>()
     val postUploadState: LiveData<PostUploadState> get() = _postUploadState
@@ -47,7 +44,7 @@ class AddPostViewModel(private val userId: String): ViewModel() {
         }
     }
 
-    private fun processDescription(rawDescription: String): Description{
+    fun processDescription(rawDescription: String): Description{
         //currently returns the whole raw description as a caption
         return Description(rawDescription)
     }

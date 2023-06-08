@@ -17,6 +17,8 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.ViewModelProvider
+import com.example.pollista.DataAccess.Repository.HomePostsRepository
+import com.example.pollista.DataAccess.Repository.UserModelRepository
 import com.example.pollista.ViewModel.AddPostViewModel
 import com.example.pollista.ViewModelFactory.AddPostViewModelFactory
 import com.example.projectlab_pollista.R
@@ -47,7 +49,7 @@ class AddPostActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
 
         val userId = auth.currentUser!!.uid
-        val factory = AddPostViewModelFactory(userId)
+        val factory = AddPostViewModelFactory(HomePostsRepository(), UserModelRepository())
         viewModel = ViewModelProvider(this, factory).get(AddPostViewModel::class.java)
 
         // Observe the post upload state

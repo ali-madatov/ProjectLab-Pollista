@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.lifecycle.ViewModelProvider
+import com.example.pollista.DataAccess.Repository.UserModelRepository
 import com.example.pollista.ViewModel.AddPostViewModel
 import com.example.pollista.ViewModel.SignUpViewModel
 import com.example.pollista.ViewModelFactory.SignUpViewModelFactory
@@ -43,7 +44,7 @@ class SignUpActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         setContentView(R.layout.activity_sign_up)
 
-        val factory = SignUpViewModelFactory("")
+        val factory = SignUpViewModelFactory(UserModelRepository())
         viewModel = ViewModelProvider(this, factory).get(SignUpViewModel::class.java)
 
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

@@ -7,8 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
-    private val repository = HomePostsRepository()
+class HomeViewModel(private val repository: HomePostsRepository) : ViewModel() {
     private val refreshTrigger = MutableStateFlow(Unit)
     val posts = refreshTrigger.flatMapLatest {
         repository.getHomePostsDetails().flow.cachedIn(viewModelScope)

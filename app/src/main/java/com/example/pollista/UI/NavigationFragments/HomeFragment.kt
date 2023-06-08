@@ -16,12 +16,10 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pollista.Adapters.PostsAdapter
 import com.example.pollista.BusinessModel.HomePostDetails
-import com.example.pollista.DataAccess.Model.PostModel
-import com.example.pollista.ViewModel.AddPostViewModel
+import com.example.pollista.DataAccess.Repository.HomePostsRepository
 import com.example.pollista.ViewModel.HomeViewModel
 import com.example.pollista.ViewModelFactory.HomeViewModelFactory
 import com.example.projectlab_pollista.R
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -57,7 +55,7 @@ class HomeFragment : Fragment(), OnVoteClickListener {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_home, container, false)
 
-        val factory = HomeViewModelFactory(FirebaseAuth.getInstance().currentUser!!.uid)
+        val factory = HomeViewModelFactory(HomePostsRepository())
 
         viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
         postsAdapter = PostsAdapter(this)
