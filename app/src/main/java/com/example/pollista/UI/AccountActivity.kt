@@ -10,28 +10,35 @@ import android.view.*
 import android.view.View.*
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.pollista.Modules.GlideApp
+import com.example.pollista.ViewModel.AccountViewModel
+import com.example.pollista.ViewModelFactory.AccountViewModelFactory
 import com.example.projectlab_pollista.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
 
 
 class AccountActivity : AppCompatActivity() {
 
     lateinit var imageView: ImageView
     lateinit var menuItem: MenuItem
+    lateinit var viewModel: AccountViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val imageUrl = "https://static.remove.bg/remove-bg-web/b27c50a4d669fdc13528397ba4bc5bd61725e4cc/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png";
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account)
-
         setWindowDecorView(true)
+
+        val factory = AccountViewModelFactory(FirebaseAuth.getInstance().currentUser!!.uid)
+        viewModel = ViewModelProvider(this, factory).get(AccountViewModel::class.java)
+
         val fab = findViewById<FloatingActionButton>(R.id.fab_button)
         fab.imageTintList = null
         fab.setOnClickListener { startAddPostActivity() }
@@ -41,7 +48,7 @@ class AccountActivity : AppCompatActivity() {
         menuItem = menu.findItem(R.id.nav_profile)
 
 
-        uploadProfileImage(imageUrl)
+        uploadProfileImage()
 
         bottomNavigationView.itemIconTintList = null
 
@@ -68,23 +75,28 @@ class AccountActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun uploadProfileImage(imageUrl: String){
+    fun uploadProfileImage(){
+        viewModel.getProfilePhotoUrl()
         //loading profile picture from url using Glide Library
-        GlideApp.with(this)
-            .asBitmap()
-            .load(imageUrl)
-            .apply(
-                RequestOptions
-                    .circleCropTransform().placeholder(R.drawable.photo2).error(R.drawable.photo2))
-            .into(object : CustomTarget<Bitmap>() {
-                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                    menuItem.icon = BitmapDrawable(resources, resource)
-                }
+        viewModel.profilePhotoUrl.observe(this){
+            it?.let {imageUrl ->
+                GlideApp.with(this)
+                    .asBitmap()
+                    .load(imageUrl)
+                    .apply(
+                        RequestOptions
+                            .circleCropTransform().placeholder(R.drawable.photo2).error(R.drawable.photo2))
+                    .into(object : CustomTarget<Bitmap>() {
+                        override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                            menuItem.icon = BitmapDrawable(resources, resource)
+                        }
 
-                override fun onLoadCleared(placeholder: Drawable?) {
+                        override fun onLoadCleared(placeholder: Drawable?) {
 
-                }
-            })
+                        }
+                    })
+            }
+        }
     }
 
     private fun onNavigationViewColorChanged(navView: BottomNavigationView,fab: FloatingActionButton,isDarkMode: Boolean){

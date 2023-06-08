@@ -7,16 +7,23 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import com.example.pollista.ViewModel.SignInViewModel
+import com.example.pollista.ViewModelFactory.SignInViewModelFactory
 import com.example.projectlab_pollista.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 class SignInActivity : AppCompatActivity() {
+
+    lateinit var viewModel: SignInViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         setContentView(R.layout.activity_sign_in)
 
+        val factory = SignInViewModelFactory("")
+        viewModel = ViewModelProvider(this, factory).get(SignInViewModel::class.java)
         val userId = intent.getStringExtra("user_id")
         val emailId = intent.getStringExtra("email_id")
     }

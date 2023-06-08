@@ -2,14 +2,39 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ltProfile"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    android:layout_marginTop="27dp"
-    app:layout_constraintTop_toTopOf="@id/ltTopLayer"
+    app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ltTopLayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-7dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnHamburger"
+            android:layout_width="21.9dp"
+            android:layout_height="17dp"
+
+            android:background="@drawable/menu_icon"
+
+            android:layout_margin="27dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="1.0"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgProfilePhoto"
@@ -24,10 +49,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="27dp"
         app:layout_constraintHorizontal_bias="0.5" />
 
     <TextView
-        android:id="@+id/tvProfileName"
+        android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -44,13 +70,57 @@
         app:layout_constraintHorizontal_bias="0.5"/>
 
     <LinearLayout
+        android:id="@+id/ltPersonalInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/tvUsername"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Ali Madatov"
+            android:fontFamily="@font/gilorysemibold"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/main_black"
+
+            android:clickable="false"/>
+
+        <TextView
+            android:id="@+id/tvBio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Software Developer"
+            android:fontFamily="@font/giloryregular"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/main_black"
+
+            android:clickable="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/ltDetailsTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/tvProfileName"
+        app:layout_constraintTop_toBottomOf="@id/ltPersonalInfo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5">

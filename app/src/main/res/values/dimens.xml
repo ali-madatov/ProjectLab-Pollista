@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="normal_text_size">18sp</dimen>
+    <dimen name="medium_text_size">19sp</dimen>
+    <dimen name="start_margin">35dp</dimen>
+    <dimen name="end_margin">35dp</dimen>
+    <dimen name="top_margin">25dp</dimen>
+    <dimen name="small_top_margin">15dp</dimen>
+    <dimen name="horizontal_padding">15dp</dimen>
+    <dimen name="label_width">100dp</dimen>
+    <dimen name="normal_text_vertical_padding">12dp</dimen>
+
+    <!-- Float resource values -->
+    <item name="normal_text_line_spacing" format="float" type="dimen">0.08</item>
+</resources>

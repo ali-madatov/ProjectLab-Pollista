@@ -8,13 +8,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asFlow
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pollista.Adapters.GridViewAdapter
-import com.example.pollista.ExternalResources.SpannedGridLayoutManager
-import com.example.pollista.ExternalResources.SpannedGridLayoutManager.SpanInfo
-import com.example.pollista.Model.PostModel
+import com.example.pollista.UI.ExternalResources.SpannedGridLayoutManager
+import com.example.pollista.UI.ExternalResources.SpannedGridLayoutManager.SpanInfo
+import com.example.pollista.ViewModel.SearchViewModel
+import com.example.pollista.ViewModelFactory.SearchViewModelFactory
 import com.example.projectlab_pollista.R
-import java.util.*
+import kotlinx.coroutines.launch
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -32,8 +36,8 @@ class SearchFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var gridViewAdapter: GridViewAdapter
-    private var dataList = mutableListOf<PostModel>()
+    private lateinit var viewModel: SearchViewModel
+    private lateinit var exploreViewAdapter: GridViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +59,10 @@ class SearchFragment : Fragment() {
             ResourcesCompat.getFont(requireActivity().applicationContext,R.font.gilroymedium),
             Typeface.NORMAL)
         title.typeface = typeFace
+
+        val factory = SearchViewModelFactory()
+
+        viewModel = ViewModelProvider(this, factory).get(SearchViewModel::class.java)
 
         val recyclerView = v.findViewById<RecyclerView>(R.id.recyclerView)
         var bigItemToCheck = 0
@@ -82,16 +90,23 @@ class SearchFragment : Fragment() {
             0.556f // how big is default item
         )
 
-        gridViewAdapter = GridViewAdapter(requireActivity().applicationContext)
+        exploreViewAdapter = GridViewAdapter()
 
-        for (range in 0..100){
-            dataList.add(PostModel(1234567,R.drawable.image1,R.drawable.image2,"Help me to make the right choice :)",
-                Arrays.asList("#apple","#samsung","#12pro","#s21ultra")))
-        }
-        gridViewAdapter.setDataList(dataList)
         recyclerView.layoutManager = manager
-        recyclerView.adapter = gridViewAdapter
+        recyclerView.adapter = exploreViewAdapter
         return v;
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.recommendedPosts.asFlow().collect{
+                viewLifecycleOwner.lifecycleScope.launch{
+                    exploreViewAdapter.submitData(it)
+                }
+            }
+        }
     }
 
     companion object {

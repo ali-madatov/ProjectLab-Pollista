@@ -1,4 +1,4 @@
-package com.example.pollista.ExternalResources
+package com.example.pollista.UI.ExternalResources
 
 import android.graphics.Paint
 import android.graphics.Typeface
